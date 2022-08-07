@@ -6,9 +6,31 @@ body {
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 0;
   font-family: 'Rubik', sans-serif;
   background-size: cover;
 }
+
+.card{
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.bottom-card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1{
+  margin: 10px;
+  font-size: 70px;
+}
+
+h2{
+  margin-top: 0.8rem;
+  margin-bottom: 0;
+}
+
 
 

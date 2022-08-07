@@ -12,8 +12,9 @@ def index(request):
         url = BASE_URL + 'q=' + city + '&appid=' + API_KEY
         response = requests.get(url).json()
         context = {
-            'city': city,
-            'temperature': round(response['main']['temp'] - 273.15, 1),
+            'city': response['name'],
+            'country': response['sys']['country'],
+            'temperature': round(response['main']['temp'] - 273.15),
             'description': response['weather'][0]['description'],
             'icon': response['weather'][0]['icon']
         }
