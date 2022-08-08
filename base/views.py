@@ -23,8 +23,12 @@ def index(request):
         'city': response['name'],
         'country': response['sys']['country'],
         'temperature': round(response['main']['temp'] - 273.15),
+        'min_temp': round(response['main']['temp_min'] - 273.15),
+        'max_temp': round(response['main']['temp_max'] - 273.15),
         'description': response['weather'][0]['description'],
-        'icon': response['weather'][0]['icon']
+        'humidity': response['main']['humidity'],
+        'pressure': response['main']['pressure'],
+        'wind': round(response['wind']['speed'], 1),
+        
     }    
-
     return render(request, 'city.html', context)

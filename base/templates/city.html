@@ -4,7 +4,7 @@
 
 {% if city != None %}
 <div class="container d-flex flex-column align-items-center">
-    <div class="icon mb-5 mt-5">
+    <div class="icon mb-2 mt-3">
         {% if description == 'clear sky' %}
         <i class="fas fa-sun fa-10x"></i>
         {% elif description == 'few clouds' %}
@@ -32,26 +32,24 @@
         <h1>{{ temperature }}°</h1>
         <div class="description">
             <h2>{{ description }}</h1>
-            <p>{{ city }}, {{ country }}</p>
+                <p>{{ city }}, {{ country }}</p>
         </div>
-
     </div>
-
+</div>
+<div class="details">
+    <div class="detail">
+        <i class="fas fa-droplet"></i>
+        <p>{{ humidity }}%</p>
+    </div>
+    <div class="detail">
+        <i class="fas fa-gauge"></i>
+        <p>{{ pressure }}hPa</p>
+    </div>
+    <div class="detail">
+        <i class="fas fa-wind"></i>
+        <p>{{ wind }} m/s</p>
+    </div>
 </div>
 {% endif %}
-
-<script>
-    let endpoint =
-        "https://api.unsplash.com/search/photos?client_id=Y3ktOKFZnn2oSsIXBA-ZEnsdZbkckYqiDw35U_WW6w0&query={{ city }}";
-
-    fetch(endpoint)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            loadingBackground = data.results[0].urls.regular;
-            document.body.style.backgroundImage = `url(${loadingBackground})`;            
-        })
-</script>
 
 {% endblock %}
