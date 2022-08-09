@@ -74,6 +74,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'weatherApp.wsgi.application'
 
+import os
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'base/static')]
+STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
+
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
