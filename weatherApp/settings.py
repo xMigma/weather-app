@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4f9@j*s!t#q5z%s&5g81g8mj%#r+kwih(s*7lw)z2l3(c+4&oa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'weatherApp.wsgi.application'
 
 import os
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'base/static')]
-STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT =os.path.join(BASE_DIR, 'base/staticfiles')
 
 
 # Database
