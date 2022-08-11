@@ -3,9 +3,10 @@ from pydoc import resolve
 import requests
 import json
 from django.shortcuts import render
+from decouple import config
 
 BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?q='
-API_KEY = '267d5a6861d7d54d0c3ed913fec66929'
+API_KEY = config('API_KEY')
 
 def get_city_by_ip():
     ip = requests.get('https://api.ipify.org').text
