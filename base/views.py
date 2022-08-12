@@ -9,18 +9,28 @@ from decouple import config
 BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?q='
 API_KEY = config('API_KEY')
 
-def get_city_by_ip():
-    ip = requests.get('https://api.ipify.org').text
-    res = requests.get('http://ip-api.com/json/' + ip)
-    return res.json()['city']
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+def get_city_by_ip(request):
+    try:
+        ip = get_client_ip(request)
+        res = requests.get('http://ip-api.com/json/' + ip)
+        return res.json()['city']
+    except KeyError:
+        return 'London'
 
 def index(request):
     global context
     if request.method == 'POST':
         city = request.POST.get('city')
     else:
-        city = get_city_by_ip()
-
+        city = get_city_by_ip(request)
     try:
         url = BASE_URL + city + '&appid=' + API_KEY
         response = requests.get(url).json()
