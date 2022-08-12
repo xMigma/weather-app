@@ -1,8 +1,4 @@
-from distutils.log import error
-from operator import ge
-from pydoc import resolve
 import requests
-import json
 from django.shortcuts import render
 from decouple import config
 
